@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Screens/home_page_widgets/input_fields.dart';
+import 'home_page_widgets/pages_circles.dart';
 
 class MyHomePage extends StatelessWidget {
   @override
@@ -14,6 +15,7 @@ class MyHomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             MyInputFields(),
+            MyPagesCircles(),
           ],
         ),
       ),
