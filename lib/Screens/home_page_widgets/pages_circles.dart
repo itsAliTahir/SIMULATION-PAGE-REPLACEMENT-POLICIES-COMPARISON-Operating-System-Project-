@@ -9,7 +9,8 @@ class MyPagesCircles extends StatelessWidget {
   Widget build(BuildContext context) {
     return Wrap(
       children: [
-        for (int i = 0; i < int.parse(pageController.text); i++)
+        // for (int i = 0; i < int.parse(pageController.text); i++)
+        for (int i = 0; i < 20; i++)
           Container(
             width: 60,
             height: 60,

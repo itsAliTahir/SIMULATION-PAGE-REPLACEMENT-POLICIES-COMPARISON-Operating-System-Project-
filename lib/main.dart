@@ -14,7 +14,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         hoverColor: Colors.blueAccent,
+        scaffoldBackgroundColor: const Color.fromARGB(255, 93, 145, 247),
       ),
+      debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
   }
