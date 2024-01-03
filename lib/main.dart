@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
+import 'Provider/data_provider.dart';
 import 'Screens/home_page.dart';
 
 void main() {
@@ -9,15 +10,21 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Operating System Project',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        hoverColor: Colors.blueAccent,
-        scaffoldBackgroundColor: const Color.fromARGB(255, 93, 145, 247),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ProviderClass()),
+      ],
+      child: MaterialApp(
+        title: 'Operating System Project',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          hoverColor: Colors.blueAccent,
+          primaryColor: Colors.blue,
+          scaffoldBackgroundColor: const Color.fromARGB(255, 93, 145, 247),
+        ),
+        debugShowCheckedModeBanner: false,
+        home: MyHomePage(),
       ),
-      debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
     );
   }
 }
