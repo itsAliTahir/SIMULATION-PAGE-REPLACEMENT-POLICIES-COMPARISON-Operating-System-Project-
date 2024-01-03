@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:os_project/Provider/data_provider.dart';
-import 'package:provider/provider.dart';
 import '../../global_data.dart';
 
 class MyInputFields extends StatefulWidget {

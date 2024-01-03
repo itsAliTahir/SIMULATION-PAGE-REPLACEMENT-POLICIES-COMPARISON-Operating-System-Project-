@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:os_project/Screens/home_page_widgets/input_fields.dart';
 import 'package:os_project/Screens/home_page_widgets/pages_circles.dart';
 
+import 'select_algorithm.dart';
+
 class MyIndexScreen extends StatefulWidget {
   const MyIndexScreen({super.key});
 
@@ -20,10 +22,7 @@ class _MyIndexScreenState extends State<MyIndexScreen> {
     List<Widget> slides = [
       MyInputFields(),
       MyPagesCircles(),
-      Container(
-        height: 300,
-        color: Colors.white,
-      ),
+      MySelectAlgorithm(),
     ];
     return Center(
       child: Column(
