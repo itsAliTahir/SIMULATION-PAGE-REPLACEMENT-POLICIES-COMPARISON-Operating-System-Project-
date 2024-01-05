@@ -16,6 +16,7 @@ class _MyFIFOAlgorithmState extends State<MyFIFOAlgorithm> {
   List<int> stackValues = List<int>.filled(7, -2);
   List<String> stringResult = List<String>.filled(20, "-");
   bool isHit = false;
+  bool isStarted = false;
   int hitIndex = -1;
   String bottomText = "";
   Color bottomTextColor = Colors.transparent;
@@ -62,6 +63,7 @@ class _MyFIFOAlgorithmState extends State<MyFIFOAlgorithm> {
   );
   int firstInIndex = -1;
   Timer mytimer = Timer.periodic(Duration.zero, (timer) {});
+  Timer mytimer1 = Timer.periodic(Duration.zero, (timer) {});
   int referenceStringPointer = 0;
 
   Widget newPage(
@@ -123,6 +125,37 @@ class _MyFIFOAlgorithmState extends State<MyFIFOAlgorithm> {
     super.initState();
     firstInIndex = 0;
     mytimer.cancel();
+    mytimer1.cancel();
+  }
+
+  void reset() {
+    stringResult = List<String>.filled(20, "-");
+    isHit = false;
+    hitIndex = -1;
+    bottomText = "";
+    bottomTextColor = Colors.transparent;
+    for (int i = 0; i < int.parse(frameController.text); i++) {
+      stackValues[i] = -1;
+    }
+    firstInIndex = 0;
+    Frame0 = const SizedBox();
+    Frame1 = const SizedBox();
+    Frame2 = const SizedBox();
+    Frame3 = const SizedBox();
+    Frame4 = const SizedBox();
+    Frame5 = const SizedBox();
+    Frame6 = const SizedBox();
+    referenceStringPointer = 0;
+  }
+
+  String countPageFault() {
+    int temp = 0;
+    for (int i = 0; i < stringResult.length; i++) {
+      if (stringResult[i] == 'M') {
+        temp++;
+      }
+    }
+    return temp.toString();
   }
 
   @override
@@ -238,8 +271,9 @@ class _MyFIFOAlgorithmState extends State<MyFIFOAlgorithm> {
         }
       } else {
         referenceStringPointer++;
-        bottomText = "Finished";
-        bottomTextColor = const Color.fromARGB(255, 5, 208, 110);
+        bottomText = "Total Page Fault: ${countPageFault()}";
+        bottomTextColor = const Color.fromARGB(255, 131, 131, 131);
+        isStarted = false;
         mytimer.cancel();
       }
       print(stackValues);
@@ -251,7 +285,7 @@ class _MyFIFOAlgorithmState extends State<MyFIFOAlgorithm> {
         child: Center(
           child: Card(
             color: Colors.white,
-            shadowColor: Colors.transparent,
+            elevation: 5,
             surfaceTintColor: Colors.white,
             margin: const EdgeInsets.all(50),
             child: SizedBox(
@@ -265,6 +299,8 @@ class _MyFIFOAlgorithmState extends State<MyFIFOAlgorithm> {
                         margin: const EdgeInsets.only(left: 20),
                         child: InkWell(
                           onTap: () {
+                            mytimer.cancel();
+                            pageIndex = 0;
                             controllerMain.animateToPage(0,
                                 curve: Curves.linear,
                                 duration: const Duration(milliseconds: 500));
@@ -288,7 +324,7 @@ class _MyFIFOAlgorithmState extends State<MyFIFOAlgorithm> {
                       Container(
                         margin: const EdgeInsets.only(top: 40),
                         child: Text(
-                          "Algorithm Name",
+                          "FIFO Page Replacement Algorithm",
                           style: TextStyle(
                               color: Theme.of(context).scaffoldBackgroundColor,
                               fontSize: 20,
@@ -302,88 +338,254 @@ class _MyFIFOAlgorithmState extends State<MyFIFOAlgorithm> {
                       )
                     ],
                   ),
-                  Container(
-                    margin: EdgeInsets.all(20),
-                    child: InkWell(
-                      onTap: () {
-                        if (mytimer.isActive) {
-                        } else {
-                          mytimer =
-                              Timer.periodic(Duration(seconds: 2), (timer) {
-                            FIFOFunction();
-                            setState(() {});
-                          });
-                        }
-                      },
-                      borderRadius: BorderRadius.circular(8),
-                      child: Ink(
-                        width: 80,
-                        height: 40,
-                        decoration: BoxDecoration(
-                            color: Theme.of(context).scaffoldBackgroundColor,
-                            borderRadius: BorderRadius.circular(8)),
-                        child: const Center(
-                            child: Text(
-                          "Animate",
-                          style: TextStyle(color: Colors.white),
-                        )),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      mytimer.isActive
+                          ? const SizedBox()
+                          : Container(
+                              margin: const EdgeInsets.all(20),
+                              child: InkWell(
+                                onTap: mytimer.isActive
+                                    ? null
+                                    : () {
+                                        reset();
+                                        setState(() {});
+                                      },
+                                borderRadius: BorderRadius.circular(8),
+                                child: Ink(
+                                  width: 80,
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          color: const Color.fromARGB(
+                                              255, 119, 119, 119))),
+                                  child: const Center(
+                                      child: Text(
+                                    "Reset",
+                                    style: TextStyle(color: Colors.black),
+                                  )),
+                                ),
+                              ),
+                            ),
+                      Container(
+                        margin: const EdgeInsets.all(20),
+                        child: InkWell(
+                          onTap: () {
+                            if (mytimer.isActive == false &&
+                                referenceStringPointer >=
+                                    int.parse(pageController.text)) {
+                              reset();
+                              isStarted = true;
+                              setState(() {});
+
+                              mytimer = Timer.periodic(
+                                  const Duration(seconds: 2), (timer) {
+                                setState(() {});
+                                FIFOFunction();
+                                setState(() {});
+                              });
+                            } else if (mytimer.isActive) {
+                              mytimer.cancel();
+                              isStarted = false;
+                              setState(() {});
+                            } else {
+                              isStarted = true;
+                              setState(() {});
+                              mytimer = Timer.periodic(
+                                  const Duration(seconds: 2), (timer) {
+                                setState(() {});
+                                FIFOFunction();
+                                setState(() {});
+                              });
+                            }
+                          },
+                          borderRadius: BorderRadius.circular(8),
+                          child: Ink(
+                            width: 100,
+                            height: 40,
+                            decoration: BoxDecoration(
+                                color:
+                                    Theme.of(context).scaffoldBackgroundColor,
+                                borderRadius: BorderRadius.circular(8)),
+                            child: Center(
+                                child: isStarted == true
+                                    ? const Icon(Icons.pause,
+                                        color: Colors.white)
+                                    : isStarted == false &&
+                                            referenceStringPointer >=
+                                                int.parse(pageController.text)
+                                        ? const Text(
+                                            "Restart",
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          )
+                                        : const Text(
+                                            "Animate",
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          )),
+                          ),
+                        ),
                       ),
-                    ),
+                      mytimer.isActive
+                          ? const SizedBox()
+                          : Container(
+                              margin: const EdgeInsets.all(20),
+                              child: InkWell(
+                                onTap: mytimer.isActive || mytimer1.isActive
+                                    ? null
+                                    : () {
+                                        FIFOFunction();
+                                        setState(() {});
+                                        mytimer1 = Timer.periodic(
+                                            const Duration(seconds: 2),
+                                            (timer) {
+                                          timer.cancel();
+                                          setState(() {});
+                                        });
+                                      },
+                                borderRadius: BorderRadius.circular(8),
+                                child: Ink(
+                                  width: 80,
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                          color: const Color.fromARGB(
+                                              255, 119, 119, 119))),
+                                  child: const Center(
+                                      child: Icon(Icons.navigate_next_sharp)),
+                                ),
+                              ),
+                            ),
+                    ],
                   ),
                   Container(
-                    margin: EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(10),
                     child: Column(
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            for (int i = 0;
-                                i < int.parse(pageController.text);
-                                i++)
-                              AnimatedContainer(
-                                  duration: const Duration(milliseconds: 500),
-                                  width:
-                                      referenceStringPointer - 1 == i ? 40 : 30,
-                                  height:
-                                      referenceStringPointer - 1 == i ? 40 : 30,
-                                  margin: const EdgeInsets.only(
-                                      left: 5, right: 5, top: 5, bottom: 0),
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(100),
-                                      border: Border.all(
-                                          color: referenceStringPointer - 1 == i
-                                              ? Colors.black
-                                              : Colors.grey)),
-                                  child: Center(
-                                      child: Text(pagesIds[i].toString()))),
-                          ],
+                        const Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Text("Refrence String",
+                              textAlign: TextAlign.left,
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 16)),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            for (int i = 0;
-                                i < int.parse(pageController.text);
-                                i++)
-                              Container(
-                                  width: 30,
-                                  height: 30,
-                                  margin:
-                                      const EdgeInsets.only(left: 5, right: 5),
-                                  child: Center(
-                                      child: Text(
-                                    stringResult[i],
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: stringResult[i] == "M"
-                                            ? Colors.redAccent
-                                            : stringResult[i] == "H"
-                                                ? Theme.of(context)
-                                                    .scaffoldBackgroundColor
-                                                : Colors.transparent),
-                                  ))),
-                          ],
+                        SizedBox(
+                          height: 50,
+                          width: double.infinity,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              for (int i = 0;
+                                  i < int.parse(pageController.text);
+                                  i++)
+                                AnimatedContainer(
+                                    duration: const Duration(milliseconds: 500),
+                                    width: referenceStringPointer - 1 == i ||
+                                            (isStarted == true &&
+                                                referenceStringPointer == 0 &&
+                                                i == 0)
+                                        ? 40
+                                        : 30,
+                                    height: referenceStringPointer - 1 == i ||
+                                            (isStarted == true &&
+                                                referenceStringPointer == 0 &&
+                                                i == 0)
+                                        ? 40
+                                        : 30,
+                                    margin: const EdgeInsets.only(
+                                        left: 5, right: 5, top: 5, bottom: 0),
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                        border: Border.all(
+                                            color:
+                                                referenceStringPointer - 1 ==
+                                                            i ||
+                                                        (isStarted == true &&
+                                                            referenceStringPointer ==
+                                                                0 &&
+                                                            i == 0)
+                                                    ? Colors.black
+                                                    : Colors.grey)),
+                                    child: Center(
+                                        child: Text(
+                                      pagesIds[i].toString(),
+                                      style: TextStyle(
+                                          fontSize: referenceStringPointer -
+                                                          1 ==
+                                                      i ||
+                                                  (isStarted == true &&
+                                                      referenceStringPointer ==
+                                                          0 &&
+                                                      i == 0)
+                                              ? 20
+                                              : 16,
+                                          color: referenceStringPointer -
+                                                          1 ==
+                                                      i ||
+                                                  (isStarted ==
+                                                          true &&
+                                                      referenceStringPointer ==
+                                                          0 &&
+                                                      i == 0)
+                                              ? Colors.blue
+                                              : const Color.fromARGB(
+                                                  255, 99, 99, 99)),
+                                    ))),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 50,
+                          width: double.infinity,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              for (int i = 0;
+                                  i < int.parse(pageController.text);
+                                  i++)
+                                AnimatedContainer(
+                                    duration: const Duration(milliseconds: 500),
+                                    width: referenceStringPointer - 1 == i ||
+                                            (isStarted == true &&
+                                                referenceStringPointer == 0 &&
+                                                i == 0)
+                                        ? 40
+                                        : 30,
+                                    height: referenceStringPointer - 1 == i ||
+                                            (isStarted == true &&
+                                                referenceStringPointer == 0 &&
+                                                i == 0)
+                                        ? 40
+                                        : 30,
+                                    margin: const EdgeInsets.only(
+                                        left: 5, right: 5),
+                                    child: Center(
+                                        child: Text(
+                                      stringResult[i],
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: stringResult[i] == "M"
+                                              ? Colors.redAccent
+                                              : stringResult[i] == "H"
+                                                  ? Theme.of(context)
+                                                      .scaffoldBackgroundColor
+                                                  : Colors.transparent),
+                                    ))),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -418,7 +620,7 @@ class _MyFIFOAlgorithmState extends State<MyFIFOAlgorithm> {
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(top: 30),
+                    margin: const EdgeInsets.only(top: 30, bottom: 20),
                     child: Text(
                       bottomText,
                       style: TextStyle(

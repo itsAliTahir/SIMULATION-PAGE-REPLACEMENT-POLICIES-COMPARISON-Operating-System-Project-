@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:os_project/Screens/home_page_widgets/input_fields.dart';
 import 'package:os_project/Screens/home_page_widgets/pages_circles.dart';
 
+import '../../global_data.dart';
 import 'select_algorithm.dart';
 
 class MyIndexScreen extends StatefulWidget {
@@ -13,10 +14,6 @@ class MyIndexScreen extends StatefulWidget {
 }
 
 class _MyIndexScreenState extends State<MyIndexScreen> {
-  int pageIndex = 0;
-
-  final controller = PageController();
-
   @override
   Widget build(BuildContext context) {
     List<Widget> slides = [
@@ -53,7 +50,7 @@ class _MyIndexScreenState extends State<MyIndexScreen> {
                       topRight: Radius.circular(12))),
               child: PageView(
                 physics: const NeverScrollableScrollPhysics(),
-                controller: controller,
+                controller: slideController,
                 children: slides,
                 onPageChanged: (index) {
                   setState(() {
@@ -74,9 +71,8 @@ class _MyIndexScreenState extends State<MyIndexScreen> {
                       topRight: Radius.circular(0))),
               child: Card(
                 color: Colors.white,
-                shadowColor: Colors.transparent,
                 surfaceTintColor: Colors.white,
-                elevation: 0,
+                elevation: 5,
                 margin: const EdgeInsets.all(0),
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
@@ -96,7 +92,7 @@ class _MyIndexScreenState extends State<MyIndexScreen> {
                               if (pageIndex > 0) {
                                 setState(() {
                                   pageIndex--;
-                                  controller.animateToPage(pageIndex,
+                                  slideController.animateToPage(pageIndex,
                                       duration: Duration(milliseconds: 500),
                                       curve: Easing.standard);
                                 });
@@ -127,7 +123,7 @@ class _MyIndexScreenState extends State<MyIndexScreen> {
                               if (pageIndex < 2) {
                                 setState(() {
                                   pageIndex++;
-                                  controller.animateToPage(pageIndex,
+                                  slideController.animateToPage(pageIndex,
                                       duration: Duration(milliseconds: 500),
                                       curve: Easing.standard);
                                 });
