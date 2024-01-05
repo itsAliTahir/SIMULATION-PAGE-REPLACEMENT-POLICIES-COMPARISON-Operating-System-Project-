@@ -52,6 +52,9 @@ class ProviderClass with ChangeNotifier {
     // 2,
     // 3,
     // 4
+    //
+    //
+    // 4, 7, 6, 1, 7, 6, 1, 2, 7, 2,
   ];
 
   List<int> get pagesIds => _pagesIds;

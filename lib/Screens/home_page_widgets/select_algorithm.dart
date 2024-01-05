@@ -28,7 +28,11 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
             children: [
               GestureDetector(
                 onTap: () {
+                  algorithmIndex = 1;
                   MainpageIndex = 1;
+
+                  setState(() {});
+                  print(algorithmIndex);
                   controllerMain.animateToPage(1,
                       curve: Curves.linear,
                       duration: const Duration(milliseconds: 500));
@@ -45,7 +49,16 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
                 ),
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  algorithmIndex = 2;
+                  MainpageIndex = 1;
+                  setState(() {});
+                  print(algorithmIndex);
+                  controllerMain.animateToPage(2,
+                      curve: Curves.linear,
+                      duration: const Duration(milliseconds: 500));
+                  setState(() {});
+                },
                 child: Container(
                   width: 100,
                   height: 100,

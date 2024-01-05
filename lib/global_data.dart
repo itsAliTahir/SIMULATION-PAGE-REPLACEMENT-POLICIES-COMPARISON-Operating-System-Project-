@@ -7,5 +7,6 @@ List<FocusNode> focusNodes = List.generate(20, (index) => FocusNode());
 
 int pageIndex = 0;
 int MainpageIndex = 0;
+int algorithmIndex = 2;
 final controllerMain = PageController(initialPage: 0);
 final slideController = PageController(initialPage: 0);
