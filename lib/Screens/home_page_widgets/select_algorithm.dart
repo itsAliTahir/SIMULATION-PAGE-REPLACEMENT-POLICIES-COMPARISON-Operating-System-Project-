@@ -69,7 +69,16 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
                 ),
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  algorithmIndex = 3;
+                  MainpageIndex = 1;
+                  setState(() {});
+                  print(algorithmIndex);
+                  controllerMain.animateToPage(3,
+                      curve: Curves.linear,
+                      duration: const Duration(milliseconds: 500));
+                  setState(() {});
+                },
                 child: Container(
                   width: 100,
                   height: 100,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:os_project/Screens/algorithms/lrualgorithm.dart';
 import 'algorithms/lifoalgorithm.dart';
 import '/Screens/home_page_widgets/index_screen.dart';
 
@@ -16,7 +17,8 @@ class _MyHomePageState extends State<MyHomePage> {
     List<Widget> pages = [
       MyIndexScreen(),
       MyFIFOAlgorithm(),
-      MyLIFOAlgorithm()
+      MyLIFOAlgorithm(),
+      MyLRUAlgorithm(),
     ];
 
     return Scaffold(
