@@ -7,6 +7,8 @@ import '../global_data.dart';
 import 'algorithms/fifoalgorithm.dart';
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -14,16 +16,19 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   List<Widget> pages = [
-    MyIndexScreen(),
-    MyFIFOAlgorithm(),
-    MyLIFOAlgorithm(),
-    MyLRUAlgorithm(),
+    const MyIndexScreen(),
+    const MyFIFOAlgorithm(),
+    const MyLIFOAlgorithm(),
+    const MyLRUAlgorithm(),
   ];
+  @override
   void initState() {
     super.initState();
 
     tabController = TabController(
-        length: 4, vsync: this, animationDuration: Duration(milliseconds: 500));
+        length: 4,
+        vsync: this,
+        animationDuration: const Duration(milliseconds: 500));
   }
 
   @override

@@ -42,7 +42,7 @@ Widget hitPage(
       height: 60,
       margin: EdgeInsets.only(top: positionIndex * 60),
       decoration: BoxDecoration(
-          color: Color.fromARGB(255, 12, 73, 255),
+          color: const Color.fromARGB(255, 8, 8, 9),
           border: Border.all(color: Colors.black)),
       child: Center(
           child: Text(

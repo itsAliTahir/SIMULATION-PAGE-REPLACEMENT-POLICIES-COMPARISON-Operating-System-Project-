@@ -20,9 +20,9 @@ class _MyIndexScreenState extends State<MyIndexScreen> {
   Widget build(BuildContext context) {
     final pagesIds = Provider.of<ProviderClass>(context).pagesIds;
     List<Widget> slides = [
-      MyInputFields(),
-      MyPagesCircles(),
-      MySelectAlgorithm(),
+      const MyInputFields(),
+      const MyPagesCircles(),
+      const MySelectAlgorithm(),
     ];
     return Center(
       child: SingleChildScrollView(
@@ -96,7 +96,8 @@ class _MyIndexScreenState extends State<MyIndexScreen> {
                                 setState(() {
                                   pageIndex--;
                                   slideController.animateToPage(pageIndex,
-                                      duration: Duration(milliseconds: 500),
+                                      duration:
+                                          const Duration(milliseconds: 500),
                                       curve: Easing.standard);
                                 });
                               }
@@ -136,7 +137,8 @@ class _MyIndexScreenState extends State<MyIndexScreen> {
                                 setState(() {
                                   pageIndex++;
                                   slideController.animateToPage(pageIndex,
-                                      duration: Duration(milliseconds: 500),
+                                      duration:
+                                          const Duration(milliseconds: 500),
                                       curve: Easing.standard);
                                 });
                               }

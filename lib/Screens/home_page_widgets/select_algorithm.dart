@@ -69,8 +69,8 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
         child: GestureDetector(
           onTap: () {
             algorithmIndex = algorithmindex;
-            MainpageIndex = 1;
-            print(":$algorithmIndex");
+            mainpageIndex = 1;
+
             setState(() {});
             tabController.animateTo(algorithmIndex);
 
@@ -78,38 +78,34 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
           },
           child: HoverWidget(
             onHover: (event) {},
-            hoverChild: Container(
-              child: Center(
-                child: Container(
-                  width: algorithmindex == 1
-                      ? 80
-                      : algorithmindex == 2
-                          ? 70
-                          : 60,
-                  height: algorithmindex == 1
-                      ? 80
-                      : algorithmindex == 2
-                          ? 70
-                          : 60,
-                  child: Image.asset(
-                    image,
-                  ),
+            hoverChild: Center(
+              child: SizedBox(
+                width: algorithmindex == 1
+                    ? 80
+                    : algorithmindex == 2
+                        ? 70
+                        : 60,
+                height: algorithmindex == 1
+                    ? 80
+                    : algorithmindex == 2
+                        ? 70
+                        : 60,
+                child: Image.asset(
+                  image,
                 ),
               ),
             ),
-            child: Container(
-              child: Center(
-                child: Container(
-                    margin: const EdgeInsets.all(5),
-                    child: Text(
-                      title,
-                      style: TextStyle(
-                          color: Theme.of(context).scaffoldBackgroundColor,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 2,
-                          fontSize: 14),
-                    )),
-              ),
+            child: Center(
+              child: Container(
+                  margin: const EdgeInsets.all(5),
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                        color: Theme.of(context).scaffoldBackgroundColor,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 2,
+                        fontSize: 14),
+                  )),
             ),
           ),
         ),

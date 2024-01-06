@@ -25,7 +25,7 @@ class _MyInputFieldsState extends State<MyInputFields> {
             margin: const EdgeInsets.only(left: 75),
             child: const Align(
               alignment: Alignment.centerLeft,
-              child: Text("Total Frames",
+              child: Text("Number of Frames",
                   textAlign: TextAlign.left,
                   style: TextStyle(color: Colors.grey, fontSize: 16)),
             ),
@@ -97,7 +97,7 @@ class _MyInputFieldsState extends State<MyInputFields> {
             margin: const EdgeInsets.only(left: 75),
             child: const Align(
               alignment: Alignment.centerLeft,
-              child: Text("Total Pages",
+              child: Text("Number of Pages",
                   textAlign: TextAlign.left,
                   style: TextStyle(color: Colors.grey, fontSize: 16)),
             ),

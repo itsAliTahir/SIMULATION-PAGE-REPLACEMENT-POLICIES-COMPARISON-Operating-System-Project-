@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:async';
 import 'slides_functions.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +51,7 @@ class _MyLIFOAlgorithmState extends State<MyLIFOAlgorithm> {
   Widget Frame5 = Container(
     height: 60,
     width: 100,
-    margin: EdgeInsets.only(top: 5 * 60),
+    margin: const EdgeInsets.only(top: 5 * 60),
   );
   Widget Frame6 = Container(
     height: 60,
@@ -66,6 +68,7 @@ class _MyLIFOAlgorithmState extends State<MyLIFOAlgorithm> {
   Timer mytimer1 = Timer.periodic(Duration.zero, (timer) {});
   int referenceStringPointer = 0;
 
+  @override
   void initState() {
     for (int i = 0; i < int.parse(frameController.text); i++) {
       stackValues[i] = -1;
@@ -213,16 +216,16 @@ class _MyLIFOAlgorithmState extends State<MyLIFOAlgorithm> {
           for (int i = 0; i < stackValues.length; i++) {
             if (hitIndex == i) {
               HitFrame = hitPage(stackValues[i], i, true);
+              stringResult[referenceStringPointer] = "H";
+              referenceStringPointer++;
               setState(() {});
-              await Future.delayed(Duration(seconds: 1));
+              await Future.delayed(const Duration(seconds: 1));
               HitFrame = hitPage(stackValues[i], i, false);
               setState(() {});
             }
           }
           isHit = false;
           hitIndex = -1;
-          stringResult[referenceStringPointer] = "H";
-          referenceStringPointer++;
         }
       } else {
         referenceStringPointer++;
@@ -231,7 +234,6 @@ class _MyLIFOAlgorithmState extends State<MyLIFOAlgorithm> {
         isStarted = false;
         mytimer.cancel();
       }
-      print(stackValues);
     }
 
     return SingleChildScrollView(

@@ -4,10 +4,12 @@ import 'Provider/data_provider.dart';
 import 'Screens/home_page.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: const Color.fromARGB(255, 87, 164, 255),
         ),
         debugShowCheckedModeBanner: false,
-        home: MyHomePage(),
+        home: const MyHomePage(),
       ),
     );
   }
