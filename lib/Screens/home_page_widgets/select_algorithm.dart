@@ -15,91 +15,101 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
   Widget makeButton(
       {required int algorithmindex,
       required String title,
-      required bool hover}) {
-    return MouseRegion(
-      onEnter: (event) {
-        if (algorithmindex == 1) {
-          h1 = true;
-        } else if (algorithmindex == 2) {
-          h2 = true;
-        } else if (algorithmindex == 3) {
-          h3 = true;
-        } else {
+      required bool hover,
+      required String image}) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
+      width: algorithmindex == 1 && h1 == true ||
+              algorithmindex == 2 && h2 == true ||
+              algorithmindex == 3 && h3 == true
+          ? 110
+          : 90,
+      height: algorithmindex == 1 && h1 == true ||
+              algorithmindex == 2 && h2 == true ||
+              algorithmindex == 3 && h3 == true
+          ? 90
+          : 80,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(
+            width: algorithmindex == 1 && h1 == true ||
+                    algorithmindex == 2 && h2 == true ||
+                    algorithmindex == 3 && h3 == true
+                ? 1.5
+                : 1,
+            color: algorithmindex == 1 && h1 == true ||
+                    algorithmindex == 2 && h2 == true ||
+                    algorithmindex == 3 && h3 == true
+                ? Theme.of(context).scaffoldBackgroundColor
+                : Colors.grey,
+          ),
+          borderRadius: BorderRadius.circular(10)),
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        onEnter: (event) {
+          if (algorithmindex == 1) {
+            h1 = true;
+          } else if (algorithmindex == 2) {
+            h2 = true;
+          } else if (algorithmindex == 3) {
+            h3 = true;
+          } else {
+            h1 = false;
+            h2 = false;
+            h3 = false;
+          }
+          setState(() {});
+        },
+        onExit: (event) {
           h1 = false;
           h2 = false;
           h3 = false;
-        }
-        setState(() {});
-      },
-      onExit: (event) {
-        h1 = false;
-        h2 = false;
-        h3 = false;
-        setState(() {});
-      },
-      child: GestureDetector(
-        onTap: () {
-          algorithmIndex = algorithmindex;
-          MainpageIndex = 1;
-
-          setState(() {});
-          print(algorithmIndex);
-          controllerMain.animateToPage(algorithmindex,
-              curve: Curves.linear,
-              duration: const Duration(milliseconds: 500));
-
           setState(() {});
         },
-        child: HoverWidget(
-          onHover: (event) {},
-          hoverChild: Container(
-            width: 110,
-            height: 90,
-            decoration: BoxDecoration(
-                color: Theme.of(context).scaffoldBackgroundColor,
-                border: Border.all(
-                  color: Theme.of(context).scaffoldBackgroundColor,
+        child: GestureDetector(
+          onTap: () {
+            algorithmIndex = algorithmindex;
+            MainpageIndex = 1;
+            print(":$algorithmIndex");
+            setState(() {});
+            tabController.animateTo(algorithmIndex);
+
+            setState(() {});
+          },
+          child: HoverWidget(
+            onHover: (event) {},
+            hoverChild: Container(
+              child: Center(
+                child: Container(
+                  width: algorithmindex == 1
+                      ? 80
+                      : algorithmindex == 2
+                          ? 70
+                          : 60,
+                  height: algorithmindex == 1
+                      ? 80
+                      : algorithmindex == 2
+                          ? 70
+                          : 60,
+                  child: Image.asset(
+                    image,
+                  ),
                 ),
-                borderRadius: BorderRadius.circular(10)),
-            child: Stack(
-              children: [
-                Container(
-                    margin: const EdgeInsets.all(5),
-                    child: Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Text(
-                          title,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 2,
-                              fontSize: 16),
-                        ))),
-              ],
+              ),
             ),
-          ),
-          child: Container(
-            width: 110,
-            height: 90,
-            decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(10)),
-            child: Stack(
-              children: [
-                Container(
+            child: Container(
+              child: Center(
+                child: Container(
                     margin: const EdgeInsets.all(5),
-                    child: Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Text(
-                          title,
-                          style: TextStyle(
-                              color: Theme.of(context).scaffoldBackgroundColor,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 2,
-                              fontSize: 12),
-                        ))),
-              ],
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 2,
+                          fontSize: 14),
+                    )),
+              ),
             ),
           ),
         ),
@@ -132,7 +142,7 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
                       ? DelayedDisplay(
                           fadingDuration: const Duration(milliseconds: 500),
                           child: Text(
-                            "FIRST IN FIRST OUT Page Replacement Algorithm",
+                            "FIRST IN FIRST OUT",
                             style: TextStyle(
                                 color:
                                     Theme.of(context).scaffoldBackgroundColor,
@@ -143,7 +153,7 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
                           ? DelayedDisplay(
                               fadingDuration: const Duration(milliseconds: 500),
                               child: Text(
-                                "LAST IN FIRST OUT Page Replacement Algorithm",
+                                "LAST IN FIRST OUT",
                                 style: TextStyle(
                                     color: Theme.of(context)
                                         .scaffoldBackgroundColor,
@@ -155,7 +165,7 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
                                   fadingDuration:
                                       const Duration(milliseconds: 500),
                                   child: Text(
-                                    "LEAST RECENTLY USED Page Replacement Algorithm",
+                                    "LEAST RECENTLY USED",
                                     style: TextStyle(
                                         color: Theme.of(context)
                                             .scaffoldBackgroundColor,
@@ -171,7 +181,7 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
                             "This algorithm follows the principle of 'first in, first out,' treating memory pages like a queue where the page that has been in memory the longest is the first to be replaced. ",
                             style: TextStyle(
                                 color: Colors.grey,
-                                fontSize: 16,
+                                fontSize: 14,
                                 fontWeight: FontWeight.bold),
                           ))
                       : h2 == true
@@ -182,7 +192,7 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
                                 "Last In First Out treats memory pages as a stack, where the page that has been most recently added to memory is the first one to be considered for replacement.",
                                 style: TextStyle(
                                     color: Colors.grey,
-                                    fontSize: 16,
+                                    fontSize: 14,
                                     fontWeight: FontWeight.bold),
                               ))
                           : h3 == true
@@ -193,7 +203,7 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
                                     "This algorithm aims to capture the temporal locality of page accesses by prioritizing pages that have been recently used. This enhances adaptability to process access patterns, potentially minimizing page faults.",
                                     style: TextStyle(
                                         color: Colors.grey,
-                                        fontSize: 16,
+                                        fontSize: 14,
                                         fontWeight: FontWeight.bold),
                                   ))
                               : const SizedBox(),
@@ -219,9 +229,18 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              makeButton(algorithmindex: 1, title: "FIFO", hover: h1),
-              makeButton(algorithmindex: 2, title: "LIFO", hover: h2),
-              makeButton(algorithmindex: 3, title: "LRU", hover: h3),
+              makeButton(
+                  algorithmindex: 1,
+                  title: "FIFO",
+                  hover: h1,
+                  image: "fifo.png"),
+              makeButton(
+                  algorithmindex: 2,
+                  title: "LIFO",
+                  hover: h2,
+                  image: "lifo.png"),
+              makeButton(
+                  algorithmindex: 3, title: "LRU", hover: h3, image: "lru.png"),
             ],
           ),
         ),

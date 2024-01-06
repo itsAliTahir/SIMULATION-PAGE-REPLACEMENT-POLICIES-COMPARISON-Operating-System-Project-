@@ -256,9 +256,7 @@ class _MyLIFOAlgorithmState extends State<MyLIFOAlgorithm> {
                           onTap: () {
                             mytimer.cancel();
                             pageIndex = 0;
-                            controllerMain.animateToPage(0,
-                                curve: Curves.linear,
-                                duration: const Duration(milliseconds: 500));
+                            tabController.animateTo(0);
                           },
                           borderRadius: BorderRadius.circular(8),
                           child: Ink(

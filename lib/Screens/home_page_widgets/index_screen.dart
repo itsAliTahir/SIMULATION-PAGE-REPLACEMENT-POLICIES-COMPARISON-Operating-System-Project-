@@ -2,7 +2,9 @@ import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:os_project/Screens/home_page_widgets/input_fields.dart';
 import 'package:os_project/Screens/home_page_widgets/pages_circles.dart';
+import 'package:provider/provider.dart';
 
+import '../../Provider/data_provider.dart';
 import '../../global_data.dart';
 import 'select_algorithm.dart';
 
@@ -16,6 +18,7 @@ class MyIndexScreen extends StatefulWidget {
 class _MyIndexScreenState extends State<MyIndexScreen> {
   @override
   Widget build(BuildContext context) {
+    final pagesIds = Provider.of<ProviderClass>(context).pagesIds;
     List<Widget> slides = [
       MyInputFields(),
       MyPagesCircles(),
@@ -120,6 +123,15 @@ class _MyIndexScreenState extends State<MyIndexScreen> {
                     pageIndex < 2
                         ? InkWell(
                             onTap: () {
+                              if (pageIndex == 1) {
+                                for (int i = 0;
+                                    i < int.parse(pageController.text);
+                                    i++) {
+                                  if (pagesIds[i] == -1) {
+                                    return;
+                                  }
+                                }
+                              }
                               if (pageIndex < 2) {
                                 setState(() {
                                   pageIndex++;
