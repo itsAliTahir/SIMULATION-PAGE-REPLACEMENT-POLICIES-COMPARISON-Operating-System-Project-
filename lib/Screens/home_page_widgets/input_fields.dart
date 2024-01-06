@@ -10,9 +10,9 @@ class MyInputFields extends StatefulWidget {
 }
 
 class _MyInputFieldsState extends State<MyInputFields> {
-  final int minPageLimit = 5;
+  final int minPageLimit = 1;
   final int maxPageLimit = 20;
-  final int minFrameLimit = 2;
+  final int minFrameLimit = 1;
   final int maxFrameLimit = 7;
 
   @override
