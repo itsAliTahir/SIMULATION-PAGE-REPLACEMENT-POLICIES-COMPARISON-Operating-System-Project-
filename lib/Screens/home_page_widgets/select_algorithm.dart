@@ -205,8 +205,8 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
                               : const SizedBox(),
                   h1 == false && h2 == false && h3 == false
                       ? const DelayedDisplay(
-                          delay: Duration(milliseconds: 300),
-                          fadingDuration: Duration(milliseconds: 600),
+                          delay: Duration(milliseconds: 100),
+                          fadingDuration: Duration(milliseconds: 400),
                           child: Text(
                             "Select A Page Replacement Algorithm",
                             style: TextStyle(

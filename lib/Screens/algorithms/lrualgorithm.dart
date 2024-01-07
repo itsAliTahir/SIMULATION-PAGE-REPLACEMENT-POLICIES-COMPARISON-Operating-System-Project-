@@ -441,128 +441,117 @@ class _MyLRUAlgorithmState extends State<MyLRUAlgorithm> {
                             ),
                     ],
                   ),
-                  Container(
-                    margin: const EdgeInsets.all(10),
-                    child: Column(
-                      children: [
-                        const Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Text("Refrence String",
-                              textAlign: TextAlign.left,
-                              style:
-                                  TextStyle(color: Colors.grey, fontSize: 16)),
-                        ),
-                        SizedBox(
-                          height: 50,
-                          width: double.infinity,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              for (int i = 0;
-                                  i < int.parse(pageController.text);
-                                  i++)
-                                AnimatedContainer(
-                                    duration: const Duration(milliseconds: 500),
-                                    width: referenceStringPointer - 1 == i ||
-                                            (isStarted == true &&
-                                                referenceStringPointer == 0 &&
-                                                i == 0)
-                                        ? 40
-                                        : 30,
-                                    height: referenceStringPointer - 1 == i ||
-                                            (isStarted == true &&
-                                                referenceStringPointer == 0 &&
-                                                i == 0)
-                                        ? 40
-                                        : 30,
-                                    margin: const EdgeInsets.only(
-                                        left: 5, right: 5, top: 5, bottom: 0),
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                        border: Border.all(
-                                            color:
-                                                referenceStringPointer - 1 ==
-                                                            i ||
-                                                        (isStarted == true &&
-                                                            referenceStringPointer ==
-                                                                0 &&
-                                                            i == 0)
-                                                    ? Colors.black
-                                                    : Colors.grey)),
-                                    child: Center(
-                                        child: Text(
-                                      pagesIds[i].toString(),
-                                      style: TextStyle(
-                                          fontSize: referenceStringPointer -
-                                                          1 ==
-                                                      i ||
-                                                  (isStarted == true &&
-                                                      referenceStringPointer ==
-                                                          0 &&
-                                                      i == 0)
-                                              ? 20
-                                              : 16,
-                                          color: referenceStringPointer -
-                                                          1 ==
-                                                      i ||
-                                                  (isStarted ==
-                                                          true &&
-                                                      referenceStringPointer ==
-                                                          0 &&
-                                                      i == 0)
-                                              ? Colors.blue
-                                              : const Color.fromARGB(
-                                                  255, 99, 99, 99)),
-                                    ))),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 50,
-                          width: double.infinity,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              for (int i = 0;
-                                  i < int.parse(pageController.text);
-                                  i++)
-                                AnimatedContainer(
-                                    duration: const Duration(milliseconds: 500),
-                                    width: referenceStringPointer - 1 == i ||
-                                            (isStarted == true &&
-                                                referenceStringPointer == 0 &&
-                                                i == 0)
-                                        ? 40
-                                        : 30,
-                                    height: referenceStringPointer - 1 == i ||
-                                            (isStarted == true &&
-                                                referenceStringPointer == 0 &&
-                                                i == 0)
-                                        ? 40
-                                        : 30,
-                                    margin: const EdgeInsets.only(
-                                        left: 5, right: 5),
-                                    child: Center(
-                                        child: Text(
-                                      stringResult[i],
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: stringResult[i] == "M"
-                                              ? Colors.redAccent
-                                              : stringResult[i] == "H"
-                                                  ? Theme.of(context)
-                                                      .scaffoldBackgroundColor
-                                                  : Colors.transparent),
-                                    ))),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                  const SizedBox(
+                    height: 20,
                   ),
+                  const Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Text("Refrence String",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(color: Colors.grey, fontSize: 16)),
+                  ),
+                  Container(
+                      height: 85,
+                      margin: const EdgeInsets.all(10),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            for (int i = 0;
+                                i < int.parse(pageController.text);
+                                i++)
+                              Column(
+                                children: [
+                                  AnimatedContainer(
+                                      duration:
+                                          const Duration(milliseconds: 500),
+                                      width: referenceStringPointer - 1 == i ||
+                                              (isStarted == true &&
+                                                  referenceStringPointer == 0 &&
+                                                  i == 0)
+                                          ? 40
+                                          : 30,
+                                      height: referenceStringPointer - 1 == i ||
+                                              (isStarted == true &&
+                                                  referenceStringPointer == 0 &&
+                                                  i == 0)
+                                          ? 40
+                                          : 30,
+                                      margin: const EdgeInsets.only(
+                                          left: 5, right: 5, top: 5, bottom: 0),
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                          border: Border.all(
+                                              color: referenceStringPointer -
+                                                              1 ==
+                                                          i ||
+                                                      (isStarted == true &&
+                                                          referenceStringPointer == 0 &&
+                                                          i == 0)
+                                                  ? Colors.black
+                                                  : Colors.grey)),
+                                      child: Center(
+                                          child: Text(
+                                        pagesIds[i].toString(),
+                                        style: TextStyle(
+                                            fontSize: referenceStringPointer -
+                                                            1 ==
+                                                        i ||
+                                                    (isStarted == true &&
+                                                        referenceStringPointer ==
+                                                            0 &&
+                                                        i == 0)
+                                                ? 20
+                                                : 16,
+                                            color: referenceStringPointer -
+                                                            1 ==
+                                                        i ||
+                                                    (isStarted ==
+                                                            true &&
+                                                        referenceStringPointer ==
+                                                            0 &&
+                                                        i == 0)
+                                                ? Colors.blue
+                                                : const Color.fromARGB(
+                                                    255, 99, 99, 99)),
+                                      ))),
+                                  AnimatedContainer(
+                                      duration:
+                                          const Duration(milliseconds: 500),
+                                      width: referenceStringPointer - 1 == i ||
+                                              (isStarted == true &&
+                                                  referenceStringPointer == 0 &&
+                                                  i == 0)
+                                          ? 40
+                                          : 30,
+                                      height: referenceStringPointer - 1 == i ||
+                                              (isStarted == true &&
+                                                  referenceStringPointer == 0 &&
+                                                  i == 0)
+                                          ? 40
+                                          : 30,
+                                      margin: const EdgeInsets.only(
+                                          left: 5, right: 5),
+                                      child: Center(
+                                          child: Text(
+                                        stringResult[i],
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: stringResult[i] == "M"
+                                                ? Colors.redAccent
+                                                : stringResult[i] == "H"
+                                                    ? Theme.of(context)
+                                                        .scaffoldBackgroundColor
+                                                    : Colors.transparent),
+                                      ))),
+                                ],
+                              )
+                          ],
+                        ),
+                      )),
                   SizedBox(
                     width: 100,
                     height: int.parse(frameController.text) * 60,
