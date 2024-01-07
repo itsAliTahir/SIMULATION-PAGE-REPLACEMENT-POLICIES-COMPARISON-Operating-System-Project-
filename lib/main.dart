@@ -19,6 +19,11 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Operating System Project',
         theme: ThemeData(
+          textSelectionTheme: const TextSelectionThemeData(
+            selectionColor: Color.fromARGB(130, 5, 117, 255),
+            cursorColor: Color.fromARGB(255, 87, 164, 255),
+            selectionHandleColor: Color.fromARGB(255, 87, 164, 255),
+          ),
           primarySwatch: Colors.blue,
           hoverColor: Colors.blueAccent,
           primaryColor: Colors.blue,
@@ -31,3 +36,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+// flutter build web --web-renderer html --release

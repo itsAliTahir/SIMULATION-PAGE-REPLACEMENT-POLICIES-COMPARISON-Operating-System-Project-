@@ -28,7 +28,7 @@ class _MyPagesCirclesState extends State<MyPagesCircles> {
             margin: const EdgeInsets.only(left: 50),
             child: const Align(
               alignment: Alignment.centerLeft,
-              child: Text("Enter Pages' IDs",
+              child: Text("Enter Page IDs",
                   textAlign: TextAlign.left,
                   style: TextStyle(color: Colors.grey, fontSize: 16)),
             ),

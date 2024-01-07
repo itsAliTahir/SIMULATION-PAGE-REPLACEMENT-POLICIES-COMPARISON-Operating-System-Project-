@@ -262,7 +262,7 @@ class _MyLRUAlgorithmState extends State<MyLRUAlgorithm> {
             color: Colors.white,
             elevation: 5,
             surfaceTintColor: Colors.white,
-            margin: const EdgeInsets.all(50),
+            margin: const EdgeInsets.symmetric(vertical: 50),
             child: SizedBox(
               width: 900,
               child: Column(

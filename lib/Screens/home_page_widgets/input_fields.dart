@@ -1,6 +1,9 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../global_data.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MyInputFields extends StatefulWidget {
   const MyInputFields({super.key});
@@ -26,11 +29,84 @@ class _MyInputFieldsState extends State<MyInputFields> {
               alignment: Alignment.topRight,
               child: Container(
                   margin: const EdgeInsets.only(right: 20, bottom: 30, top: 20),
-                  child: ElevatedButton(
-                      onPressed: () {},
-                      child: const Text(
+                  child: TextButton(
+                      onPressed: () {
+                        // Call the showDialog function
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            // Return the AlertDialog
+                            return AlertDialog(
+                              title: const Text('Project Assets'),
+                              content: SizedBox(
+                                height: 150,
+                                child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          final String urlToOpen =
+                                              'https://www.example.com';
+
+                                          _launchURL() async {
+                                            if (await canLaunch(urlToOpen)) {
+                                              await launch(urlToOpen);
+                                            } else {
+                                              throw 'Could not launch $urlToOpen';
+                                            }
+                                          }
+                                        },
+                                        child: Text(
+                                          "Readme File",
+                                          style: TextStyle(
+                                              color: Theme.of(context)
+                                                  .scaffoldBackgroundColor),
+                                        ),
+                                      ),
+                                      ElevatedButton(
+                                        onPressed: () {},
+                                        child: Text(
+                                          "Source Code",
+                                          style: TextStyle(
+                                              color: Theme.of(context)
+                                                  .scaffoldBackgroundColor),
+                                        ),
+                                      ),
+                                      ElevatedButton(
+                                        onPressed: () {},
+                                        child: Text(
+                                          "Tutorial Documentation",
+                                          style: TextStyle(
+                                              color: Theme.of(context)
+                                                  .scaffoldBackgroundColor),
+                                        ),
+                                      ),
+                                    ]),
+                              ),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () {
+                                    // Close the dialog
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text(
+                                    'Close',
+                                    style: TextStyle(
+                                        color: Theme.of(context)
+                                            .scaffoldBackgroundColor),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      child: Text(
                         "View Assets",
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                            fontWeight: FontWeight.bold),
                       )))),
           Container(
             margin: const EdgeInsets.only(left: 75),
@@ -38,7 +114,10 @@ class _MyInputFieldsState extends State<MyInputFields> {
               alignment: Alignment.centerLeft,
               child: Text("Number of Frames",
                   textAlign: TextAlign.left,
-                  style: TextStyle(color: Colors.grey, fontSize: 16)),
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 16,
+                  )),
             ),
           ),
           SizedBox(
@@ -62,6 +141,10 @@ class _MyInputFieldsState extends State<MyInputFields> {
                 setState(() {});
               },
               decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        width: 2,
+                        color: Theme.of(context).scaffoldBackgroundColor)),
                 border: const OutlineInputBorder(),
                 suffixIcon: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -137,6 +220,10 @@ class _MyInputFieldsState extends State<MyInputFields> {
                 setState(() {});
               },
               decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        width: 2,
+                        color: Theme.of(context).scaffoldBackgroundColor)),
                 border: const OutlineInputBorder(),
                 suffixIcon: Row(
                   mainAxisSize: MainAxisSize.min,

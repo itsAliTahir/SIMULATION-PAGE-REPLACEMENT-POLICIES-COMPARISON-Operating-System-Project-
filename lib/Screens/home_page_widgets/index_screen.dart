@@ -76,7 +76,7 @@ class _MyIndexScreenState extends State<MyIndexScreen> {
                 color: Colors.white,
                 surfaceTintColor: Colors.white,
                 elevation: 5,
-                margin: const EdgeInsets.all(0),
+                margin: const EdgeInsets.all(0.0),
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(12),
