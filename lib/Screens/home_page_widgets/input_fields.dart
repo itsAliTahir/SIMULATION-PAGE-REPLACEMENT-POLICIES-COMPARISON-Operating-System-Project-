@@ -19,8 +19,19 @@ class _MyInputFieldsState extends State<MyInputFields> {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        // mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Align(
+              alignment: Alignment.topRight,
+              child: Container(
+                  margin: const EdgeInsets.only(right: 20, bottom: 30, top: 20),
+                  child: ElevatedButton(
+                      onPressed: () {},
+                      child: const Text(
+                        "View Assets",
+                        style: TextStyle(color: Colors.black),
+                      )))),
           Container(
             margin: const EdgeInsets.only(left: 75),
             child: const Align(
