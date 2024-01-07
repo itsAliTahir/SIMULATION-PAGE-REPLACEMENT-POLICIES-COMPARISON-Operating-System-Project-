@@ -33,7 +33,7 @@ class _MyIndexScreenState extends State<MyIndexScreen> {
               height: 60,
               color: Colors.transparent,
               child: const Text(
-                'SIMULATION: PAGE REPLACEMENT POLICIES COMPARISON',
+                'SIMULATION: PAGE REPLACEMENT POLICIES COMPARISON Testing',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Colors.white,
