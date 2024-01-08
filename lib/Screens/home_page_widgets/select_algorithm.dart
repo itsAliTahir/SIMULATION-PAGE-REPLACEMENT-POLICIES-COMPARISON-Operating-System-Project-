@@ -40,7 +40,7 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
             color: algorithmindex == 1 && h1 == true ||
                     algorithmindex == 2 && h2 == true ||
                     algorithmindex == 3 && h3 == true
-                ? Theme.of(context).scaffoldBackgroundColor
+                ? const Color.fromARGB(255, 87, 164, 255)
                 : Colors.grey,
           ),
           borderRadius: BorderRadius.circular(10)),
@@ -100,8 +100,8 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
                   margin: const EdgeInsets.all(5),
                   child: Text(
                     title,
-                    style: TextStyle(
-                        color: Theme.of(context).scaffoldBackgroundColor,
+                    style: const TextStyle(
+                        color: Color.fromARGB(255, 87, 164, 255),
                         fontWeight: FontWeight.bold,
                         letterSpacing: 2,
                         fontSize: 14),
@@ -142,6 +142,7 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
                             style: TextStyle(
                                 color:
                                     Theme.of(context).scaffoldBackgroundColor,
+                                fontFamily: "WorkSans",
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold),
                           ))
@@ -153,6 +154,7 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
                                 style: TextStyle(
                                     color: Theme.of(context)
                                         .scaffoldBackgroundColor,
+                                    fontFamily: 'WorkSans',
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold),
                               ))
@@ -165,6 +167,7 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
                                     style: TextStyle(
                                         color: Theme.of(context)
                                             .scaffoldBackgroundColor,
+                                        fontFamily: "WorkSans",
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),
                                   ))
@@ -175,10 +178,12 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
                           fadingDuration: Duration(milliseconds: 600),
                           child: Text(
                             "This algorithm follows the principle of 'first in, first out,' treating memory pages like a queue where the page that has been in memory the longest is the first to be replaced. ",
+                            textAlign: TextAlign.justify,
                             style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold),
+                              color: Colors.grey,
+                              fontSize: 16,
+                              // fontWeight: FontWeight.bold
+                            ),
                           ))
                       : h2 == true
                           ? const DelayedDisplay(
@@ -186,10 +191,12 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
                               fadingDuration: Duration(milliseconds: 600),
                               child: Text(
                                 "Last In First Out treats memory pages as a stack, where the page that has been most recently added to memory is the first one to be considered for replacement.",
+                                textAlign: TextAlign.justify,
                                 style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold),
+                                  color: Colors.grey,
+                                  fontSize: 16,
+                                  // fontWeight: FontWeight.bold
+                                ),
                               ))
                           : h3 == true
                               ? const DelayedDisplay(
@@ -197,10 +204,12 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
                                   fadingDuration: Duration(milliseconds: 600),
                                   child: Text(
                                     "This algorithm aims to capture the temporal locality of page accesses by prioritizing pages that have been recently used. This enhances adaptability to process access patterns, potentially minimizing page faults.",
+                                    textAlign: TextAlign.justify,
                                     style: TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold),
+                                      color: Colors.grey,
+                                      fontSize: 16,
+                                      // fontWeight: FontWeight.bold
+                                    ),
                                   ))
                               : const SizedBox(),
                   h1 == false && h2 == false && h3 == false

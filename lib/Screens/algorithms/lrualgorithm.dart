@@ -256,7 +256,6 @@ class _MyLRUAlgorithmState extends State<MyLRUAlgorithm> {
 
     return SingleChildScrollView(
       child: Container(
-        color: Theme.of(context).scaffoldBackgroundColor,
         child: Center(
           child: Card(
             color: Colors.white,
@@ -299,6 +298,7 @@ class _MyLRUAlgorithmState extends State<MyLRUAlgorithm> {
                         child: Text(
                           "LRU Page Replacement Algorithm",
                           style: TextStyle(
+                              fontFamily: "WorkSans",
                               color: Theme.of(context).scaffoldBackgroundColor,
                               fontSize: 20,
                               fontWeight: FontWeight.bold),
@@ -323,6 +323,7 @@ class _MyLRUAlgorithmState extends State<MyLRUAlgorithm> {
                           : Container(
                               margin: const EdgeInsets.all(20),
                               child: InkWell(
+                                hoverColor: const Color.fromARGB(23, 0, 0, 0),
                                 onTap: mytimer.isActive
                                     ? null
                                     : () {
@@ -412,6 +413,7 @@ class _MyLRUAlgorithmState extends State<MyLRUAlgorithm> {
                           : Container(
                               margin: const EdgeInsets.all(20),
                               child: InkWell(
+                                hoverColor: const Color.fromARGB(23, 0, 0, 0),
                                 onTap: mytimer.isActive || mytimer1.isActive
                                     ? null
                                     : () {

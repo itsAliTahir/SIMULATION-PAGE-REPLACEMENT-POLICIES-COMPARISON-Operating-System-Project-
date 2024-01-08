@@ -34,10 +34,22 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: TabBarView(
-          controller: tabController,
-          physics: const NeverScrollableScrollPhysics(),
-          children: pages),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+              Color.fromARGB(255, 116, 178, 254),
+              Color.fromARGB(255, 9, 117, 249),
+            ])),
+        child: TabBarView(
+            controller: tabController,
+            physics: const NeverScrollableScrollPhysics(),
+            children: pages),
+      ),
     );
   }
 }

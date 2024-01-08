@@ -17,6 +17,7 @@ class _MyPagesCirclesState extends State<MyPagesCircles> {
   @override
   Widget build(BuildContext context) {
     final pagesIds = Provider.of<ProviderClass>(context).pagesIds;
+    final forcedNext = Provider.of<ProviderClass>(context).forcedNext;
     final changePageId = Provider.of<ProviderClass>(context).changeId;
     final autoGenerate = Provider.of<ProviderClass>(context).autoGenerate;
     return Center(
@@ -57,7 +58,9 @@ class _MyPagesCirclesState extends State<MyPagesCircles> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(45),
                           border: Border.all(
-                              color: const Color.fromARGB(255, 129, 129, 129))),
+                              color: forcedNext == true && pagesIds[index] == -1
+                                  ? Colors.redAccent
+                                  : const Color.fromARGB(255, 129, 129, 129))),
                       child: Center(
                           child: Container(
                         margin: const EdgeInsets.only(bottom: 6),
@@ -96,6 +99,7 @@ class _MyPagesCirclesState extends State<MyPagesCircles> {
           ),
           Card(
             child: InkWell(
+              hoverColor: const Color.fromARGB(23, 0, 0, 0),
               onTap: () {
                 autoGenerate();
               },

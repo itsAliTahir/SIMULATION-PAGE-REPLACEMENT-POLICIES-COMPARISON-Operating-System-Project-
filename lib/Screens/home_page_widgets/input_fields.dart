@@ -2,8 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:os_project/guide.dart';
 import '../../global_data.dart';
-import 'package:url_launcher/url_launcher.dart';
+// import 'package:url_launcher/url_launcher.dart';
 
 class MyInputFields extends StatefulWidget {
   const MyInputFields({super.key});
@@ -20,13 +21,13 @@ class _MyInputFieldsState extends State<MyInputFields> {
 
   @override
   Widget build(BuildContext context) {
-    launchURL(String url) async {
-      if (await canLaunch(url)) {
-        await launch(url);
-      } else {
-        throw 'Could not launch $url';
-      }
-    }
+    // launchURL(String url) async {
+    //   if (await canLaunch(url)) {
+    //     await launch(url);
+    //   } else {
+    //     throw 'Could not launch $url';
+    //   }
+    // }
 
     return Center(
       child: Column(
@@ -37,84 +38,126 @@ class _MyInputFieldsState extends State<MyInputFields> {
               alignment: Alignment.topRight,
               child: Container(
                   margin: const EdgeInsets.only(right: 20, bottom: 30, top: 20),
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: const Color.fromARGB(255, 222, 222, 222)),
+                      borderRadius: BorderRadius.circular(40)),
                   child: TextButton(
                       onPressed: () {
-                        // Call the showDialog function
+                        print(MediaQuery.of(context).size.height);
                         showDialog(
                           context: context,
+                          // barrierColor: Colors.transparent,
                           builder: (BuildContext context) {
-                            // Return the AlertDialog
+                            // Return the dialog widget
                             return AlertDialog(
-                              title: const Text('Project Assets'),
+                              backgroundColor: Colors.white,
+                              surfaceTintColor: Colors.transparent,
+                              shadowColor: Colors.transparent,
+                              title:
+                                  const Center(child: Text('Tutorial Guide')),
                               content: SizedBox(
-                                height: 150,
-                                child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      ElevatedButton(
-                                        onPressed: () {
-                                          const String urlToOpen =
-                                              'https://github.com/itsAliTahir/SIMULATION-PAGE-REPLACEMENT-POLICIES-COMPARISON-Operating-System-Project-/blob/master/README.md';
-                                          launchURL(urlToOpen);
-                                        },
-                                        child: Text(
-                                          "Readme File",
-                                          style: TextStyle(
-                                              color: Theme.of(context)
-                                                  .scaffoldBackgroundColor),
-                                        ),
-                                      ),
-                                      ElevatedButton(
-                                        onPressed: () {
-                                          const String urlToOpen =
-                                              'https://github.com/itsAliTahir/SIMULATION-PAGE-REPLACEMENT-POLICIES-COMPARISON-Operating-System-Project-';
-
-                                          launchURL(urlToOpen);
-                                        },
-                                        child: Text(
-                                          "Source Code",
-                                          style: TextStyle(
-                                              color: Theme.of(context)
-                                                  .scaffoldBackgroundColor),
-                                        ),
-                                      ),
-                                      ElevatedButton(
-                                        onPressed: () {
-                                          const String urlToOpen =
-                                              'https://drive.google.com/file/d/1Sm_yit8zbmMGVlQx9TD3WRsQRAePqjGb/view?usp=drive_link';
-
-                                          launchURL(urlToOpen);
-                                        },
-                                        child: Text(
-                                          "Tutorial Documentation",
-                                          style: TextStyle(
-                                              color: Theme.of(context)
-                                                  .scaffoldBackgroundColor),
-                                        ),
-                                      ),
-                                    ]),
-                              ),
-                              actions: <Widget>[
-                                TextButton(
-                                  onPressed: () {
-                                    // Close the dialog
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: Text(
-                                    'Close',
-                                    style: TextStyle(
-                                        color: Theme.of(context)
-                                            .scaffoldBackgroundColor),
+                                  width:
+                                      MediaQuery.of(context).size.width > 1000
+                                          ? 900
+                                          : double.infinity,
+                                  child: MyGuide()),
+                              actions: [
+                                // OK button
+                                Center(
+                                  child: TextButton(
+                                    onPressed: () {
+                                      // Close the dialog
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text(
+                                      'Close',
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .scaffoldBackgroundColor),
+                                    ),
                                   ),
                                 ),
                               ],
                             );
                           },
                         );
+                        // Call the showDialog function
+                        // showDialog(
+                        //   context: context,
+                        //   builder: (BuildContext context) {
+                        //     // Return the AlertDialog
+                        //     return AlertDialog(
+                        //       title: const Text('Project Assets'),
+                        //       content: SizedBox(
+                        //         height: 150,
+                        //         child: Column(
+                        //             mainAxisAlignment:
+                        //                 MainAxisAlignment.spaceEvenly,
+                        //             children: [
+                        //               ElevatedButton(
+                        //                 onPressed: () {
+                        //                   const String urlToOpen =
+                        //                       'https://github.com/itsAliTahir/SIMULATION-PAGE-REPLACEMENT-POLICIES-COMPARISON-Operating-System-Project-/blob/master/README.md';
+                        //                   launchURL(urlToOpen);
+                        //                 },
+                        //                 child: Text(
+                        //                   "Readme File",
+                        //                   style: TextStyle(
+                        //                       color: Theme.of(context)
+                        //                           .scaffoldBackgroundColor),
+                        //                 ),
+                        //               ),
+                        //               ElevatedButton(
+                        //                 onPressed: () {
+                        //                   const String urlToOpen =
+                        //                       'https://github.com/itsAliTahir/SIMULATION-PAGE-REPLACEMENT-POLICIES-COMPARISON-Operating-System-Project-';
+
+                        //                   launchURL(urlToOpen);
+                        //                 },
+                        //                 child: Text(
+                        //                   "Source Code",
+                        //                   style: TextStyle(
+                        //                       color: Theme.of(context)
+                        //                           .scaffoldBackgroundColor),
+                        //                 ),
+                        //               ),
+                        //               ElevatedButton(
+                        //                 onPressed: () {
+                        //                   const String urlToOpen =
+                        //                       'https://drive.google.com/file/d/1Sm_yit8zbmMGVlQx9TD3WRsQRAePqjGb/view?usp=drive_link';
+
+                        //                   launchURL(urlToOpen);
+                        //                 },
+                        //                 child: Text(
+                        //                   "Tutorial Documentation",
+                        //                   style: TextStyle(
+                        //                       color: Theme.of(context)
+                        //                           .scaffoldBackgroundColor),
+                        //                 ),
+                        //               ),
+                        //             ]),
+                        //       ),
+                        //       actions: <Widget>[
+                        //         TextButton(
+                        //           onPressed: () {
+                        //             // Close the dialog
+                        //             Navigator.of(context).pop();
+                        //           },
+                        //           child: Text(
+                        //             'Close',
+                        //             style: TextStyle(
+                        //                 color: Theme.of(context)
+                        //                     .scaffoldBackgroundColor),
+                        //           ),
+                        //         ),
+                        //       ],
+                        //     );
+                        //   },
+                        // );
                       },
                       child: Text(
-                        "View Assets",
+                        "Guide",
                         style: TextStyle(
                             color: Theme.of(context).scaffoldBackgroundColor,
                             fontWeight: FontWeight.bold),

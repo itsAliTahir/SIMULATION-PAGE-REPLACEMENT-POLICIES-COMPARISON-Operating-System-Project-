@@ -8,5 +8,6 @@ List<FocusNode> focusNodes = List.generate(20, (index) => FocusNode());
 int pageIndex = 0;
 int mainpageIndex = 0;
 int algorithmIndex = 2;
+
 late TabController tabController;
 final slideController = PageController(initialPage: 0);

@@ -3,6 +3,7 @@ import 'dart:math';
 
 class ProviderClass with ChangeNotifier {
   bool isShuffled = false;
+  bool _forcedNext = false;
   List<int> _pagesIds = [
     -1,
     -1,
@@ -61,6 +62,12 @@ class ProviderClass with ChangeNotifier {
   ];
 
   List<int> get pagesIds => _pagesIds;
+  bool get forcedNext => _forcedNext;
+
+  void changeNextStatus(bool status) {
+    _forcedNext = status;
+    notifyListeners();
+  }
 
   void changeId(int index, int value) {
     _pagesIds[index] = value;
