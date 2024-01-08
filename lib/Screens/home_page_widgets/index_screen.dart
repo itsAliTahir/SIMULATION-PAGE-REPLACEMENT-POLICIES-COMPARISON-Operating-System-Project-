@@ -79,14 +79,17 @@ class _MyIndexScreenState extends State<MyIndexScreen> {
                 child: Container(
                   width: 400,
                   height: 80,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.transparent),
-                      borderRadius: const BorderRadius.only(
+                  decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(12),
                           bottomRight: Radius.circular(12),
                           topLeft: Radius.circular(0),
                           topRight: Radius.circular(0))),
                   child: Card(
+                    semanticContainer: false,
+                    borderOnForeground: false,
+                    elevation: 0,
+                    shadowColor: Colors.transparent,
                     color: Colors.white,
                     surfaceTintColor: Colors.white,
                     margin: const EdgeInsets.all(0.0),
