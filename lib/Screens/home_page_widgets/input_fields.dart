@@ -20,6 +20,14 @@ class _MyInputFieldsState extends State<MyInputFields> {
 
   @override
   Widget build(BuildContext context) {
+    launchURL(String url) async {
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -46,16 +54,9 @@ class _MyInputFieldsState extends State<MyInputFields> {
                                     children: [
                                       ElevatedButton(
                                         onPressed: () {
-                                          final String urlToOpen =
-                                              'https://www.example.com';
-
-                                          _launchURL() async {
-                                            if (await canLaunch(urlToOpen)) {
-                                              await launch(urlToOpen);
-                                            } else {
-                                              throw 'Could not launch $urlToOpen';
-                                            }
-                                          }
+                                          const String urlToOpen =
+                                              'https://github.com/itsAliTahir/SIMULATION-PAGE-REPLACEMENT-POLICIES-COMPARISON-Operating-System-Project-/blob/master/README.md';
+                                          launchURL(urlToOpen);
                                         },
                                         child: Text(
                                           "Readme File",
@@ -65,7 +66,12 @@ class _MyInputFieldsState extends State<MyInputFields> {
                                         ),
                                       ),
                                       ElevatedButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          const String urlToOpen =
+                                              'https://github.com/itsAliTahir/SIMULATION-PAGE-REPLACEMENT-POLICIES-COMPARISON-Operating-System-Project-';
+
+                                          launchURL(urlToOpen);
+                                        },
                                         child: Text(
                                           "Source Code",
                                           style: TextStyle(
@@ -74,7 +80,12 @@ class _MyInputFieldsState extends State<MyInputFields> {
                                         ),
                                       ),
                                       ElevatedButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          const String urlToOpen =
+                                              'https://drive.google.com/file/d/1Sm_yit8zbmMGVlQx9TD3WRsQRAePqjGb/view?usp=drive_link';
+
+                                          launchURL(urlToOpen);
+                                        },
                                         child: Text(
                                           "Tutorial Documentation",
                                           style: TextStyle(

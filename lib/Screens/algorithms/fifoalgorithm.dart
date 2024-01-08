@@ -114,10 +114,12 @@ class _MyFIFOAlgorithmState extends State<MyFIFOAlgorithm> {
     final pagesIds = Provider.of<ProviderClass>(context).pagesIds;
 
     void FIFOFunction() async {
+      // to see if pointer has reached the end
       if (referenceStringPointer < int.parse(pageController.text)) {
         if (firstInIndex >= int.parse(frameController.text)) {
           firstInIndex = 0;
         }
+        // to see if any box is hit
         for (int i = 0; i < int.parse(frameController.text); i++) {
           if (pagesIds[referenceStringPointer] != -1 &&
               pagesIds[referenceStringPointer] == stackValues[i]) {
@@ -130,6 +132,7 @@ class _MyFIFOAlgorithmState extends State<MyFIFOAlgorithm> {
         if (isHit == false) {
           bottomText = "Miss";
           bottomTextColor = Colors.redAccent;
+          // to see if any free space is available
           if (stackValues[0] == -1) {
             Frame0 = newPage(pagesIds[referenceStringPointer], 0, true);
             stackValues[0] = pagesIds[referenceStringPointer];
@@ -166,6 +169,7 @@ class _MyFIFOAlgorithmState extends State<MyFIFOAlgorithm> {
             stringResult[referenceStringPointer] = "M";
             referenceStringPointer++;
           } else {
+            // for replacement
             for (int i = 0; i < stackValues.length; i++) {
               if (firstInIndex == 0) {
                 Frame0 = newPage(stackValues[0], 0, false);
@@ -206,6 +210,7 @@ class _MyFIFOAlgorithmState extends State<MyFIFOAlgorithm> {
             }
           }
         } else {
+          // to detect which box is hit
           for (int i = 0; i < stackValues.length; i++) {
             if (hitIndex == i) {
               HitFrame = hitPage(stackValues[i], i, true);
