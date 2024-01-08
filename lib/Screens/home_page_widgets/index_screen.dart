@@ -75,7 +75,7 @@ class _MyIndexScreenState extends State<MyIndexScreen> {
                 ),
               ),
               Positioned(
-                top: 379,
+                top: 377,
                 child: Container(
                   width: 400,
                   height: 80,
