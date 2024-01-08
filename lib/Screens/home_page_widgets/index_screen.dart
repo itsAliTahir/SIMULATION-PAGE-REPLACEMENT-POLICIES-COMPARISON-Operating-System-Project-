@@ -75,13 +75,13 @@ class _MyIndexScreenState extends State<MyIndexScreen> {
                 ),
               ),
               Positioned(
-                top: 377,
+                top: 379,
                 child: Container(
                   width: 400,
                   height: 80,
-                  decoration: const BoxDecoration(
-                      // color: Colors.white,
-                      borderRadius: BorderRadius.only(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.transparent),
+                      borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(12),
                           bottomRight: Radius.circular(12),
                           topLeft: Radius.circular(0),
