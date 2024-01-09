@@ -44,7 +44,6 @@ class _MyInputFieldsState extends State<MyInputFields> {
                       borderRadius: BorderRadius.circular(40)),
                   child: TextButton(
                       onPressed: () {
-                        print(MediaQuery.of(context).size.height);
                         showDialog(
                           context: context,
                           // barrierColor: Colors.transparent,

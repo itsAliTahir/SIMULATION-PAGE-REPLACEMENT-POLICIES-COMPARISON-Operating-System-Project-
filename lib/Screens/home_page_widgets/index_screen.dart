@@ -27,7 +27,7 @@ class _MyIndexScreenState extends State<MyIndexScreen> {
     ];
     return Center(
       child: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           width: 400,
           height: 470,
           child: Stack(
