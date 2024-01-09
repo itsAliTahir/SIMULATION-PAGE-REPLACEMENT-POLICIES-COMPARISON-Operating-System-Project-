@@ -63,7 +63,7 @@ class _MyInputFieldsState extends State<MyInputFields> {
                                       MediaQuery.of(context).size.width > 1000
                                           ? 900
                                           : double.infinity,
-                                  child: MyGuide()),
+                                  child: const MyGuide()),
                               actions: [
                                 // OK button
                                 Center(
@@ -159,7 +159,7 @@ class _MyInputFieldsState extends State<MyInputFields> {
                         // );
                       },
                       child: Text(
-                        "Guide",
+                        "Tutorial",
                         style: TextStyle(
                             color: Theme.of(context).scaffoldBackgroundColor,
                             fontWeight: FontWeight.bold),

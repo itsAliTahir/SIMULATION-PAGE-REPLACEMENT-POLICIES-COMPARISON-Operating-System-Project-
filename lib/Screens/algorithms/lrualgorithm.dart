@@ -293,17 +293,31 @@ class _MyLRUAlgorithmState extends State<MyLRUAlgorithm> {
                           ),
                         ),
                       ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 40),
-                        child: Text(
-                          "LRU Page Replacement Algorithm",
-                          style: TextStyle(
-                              fontFamily: "WorkSans",
-                              color: Theme.of(context).scaffoldBackgroundColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
+                      MediaQuery.of(context).size.width >= 550
+                          ? Container(
+                              margin: const EdgeInsets.only(top: 40),
+                              child: Text(
+                                "LRU Page Replacement Algorithm",
+                                style: TextStyle(
+                                    fontFamily: "WorkSans",
+                                    color: Theme.of(context)
+                                        .scaffoldBackgroundColor,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            )
+                          : Container(
+                              margin: const EdgeInsets.only(top: 40),
+                              child: Text(
+                                "LRU Algorithm",
+                                style: TextStyle(
+                                    fontFamily: "WorkSans",
+                                    color: Theme.of(context)
+                                        .scaffoldBackgroundColor,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
                       Container(
                         width: 80,
                         height: 40,

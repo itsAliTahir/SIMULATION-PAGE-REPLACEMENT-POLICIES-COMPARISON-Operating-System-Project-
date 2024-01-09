@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ProviderClass()),
       ],
       child: MaterialApp(
-        title: 'Operating System Project',
+        title: 'Page Replacement Algorithms',
         theme: ThemeData(
           textSelectionTheme: const TextSelectionThemeData(
             selectionColor: Color.fromARGB(130, 5, 117, 255),
