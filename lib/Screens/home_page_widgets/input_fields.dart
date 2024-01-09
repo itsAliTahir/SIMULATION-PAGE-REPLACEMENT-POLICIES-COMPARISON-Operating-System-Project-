@@ -56,7 +56,9 @@ class _MyInputFieldsState extends State<MyInputFields> {
                               shadowColor: Colors.transparent,
                               title:
                                   const Center(child: Text('Tutorial Guide')),
-                              content: SizedBox(
+                              content: Container(
+                                  margin:
+                                      const EdgeInsets.symmetric(horizontal: 0),
                                   width:
                                       MediaQuery.of(context).size.width > 1000
                                           ? 900
