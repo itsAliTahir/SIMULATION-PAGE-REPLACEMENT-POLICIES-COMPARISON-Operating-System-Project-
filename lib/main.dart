@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'Provider/data_provider.dart';
 import 'Screens/home_page.dart';
+import 'temporary.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
           // scaffoldBackgroundColor: const Color.fromARGB(255, 87, 164, 255),
         ),
         debugShowCheckedModeBanner: false,
-        home: const MyHomePage(),
+        // home: const MyHomePage(),
+        home: const MyTemporary(),
       ),
     );
   }
