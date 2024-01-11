@@ -108,6 +108,7 @@ class _MyIndexScreenState extends State<MyIndexScreen> {
                         pageIndex > 0
                             ? InkWell(
                                 onTap: () {
+                                  changeNextStatus(false);
                                   if (pageIndex > 0) {
                                     setState(() {
                                       pageIndex--;
@@ -140,6 +141,12 @@ class _MyIndexScreenState extends State<MyIndexScreen> {
                         pageIndex < 2
                             ? InkWell(
                                 onTap: () {
+                                  if (pageIndex == 0 &&
+                                      (pageController.text.isEmpty ||
+                                          frameController.text.isEmpty)) {
+                                    changeNextStatus(true);
+                                    return;
+                                  }
                                   if (pageIndex == 1) {
                                     for (int i = 0;
                                         i < int.parse(pageController.text);

@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:os_project/guide.dart';
+import 'package:provider/provider.dart';
+import '../../Provider/data_provider.dart';
 import '../../global_data.dart';
 // import 'package:url_launcher/url_launcher.dart';
 
@@ -21,6 +23,7 @@ class _MyInputFieldsState extends State<MyInputFields> {
 
   @override
   Widget build(BuildContext context) {
+    final forcedNext = Provider.of<ProviderClass>(context).forcedNext;
     // launchURL(String url) async {
     //   if (await canLaunch(url)) {
     //     await launch(url);
@@ -199,8 +202,17 @@ class _MyInputFieldsState extends State<MyInputFields> {
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                         width: 2,
-                        color: Theme.of(context).scaffoldBackgroundColor)),
+                        color:
+                            forcedNext == true && frameController.text.isEmpty
+                                ? Colors.red
+                                : Theme.of(context).scaffoldBackgroundColor)),
                 border: const OutlineInputBorder(),
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        color:
+                            forcedNext == true && frameController.text.isEmpty
+                                ? Colors.red
+                                : Colors.black)),
                 suffixIcon: Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -278,8 +290,15 @@ class _MyInputFieldsState extends State<MyInputFields> {
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                         width: 2,
-                        color: Theme.of(context).scaffoldBackgroundColor)),
+                        color: forcedNext == true && pageController.text.isEmpty
+                            ? Colors.red
+                            : Theme.of(context).scaffoldBackgroundColor)),
                 border: const OutlineInputBorder(),
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        color: forcedNext == true && pageController.text.isEmpty
+                            ? Colors.red
+                            : Colors.black)),
                 suffixIcon: Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.end,
