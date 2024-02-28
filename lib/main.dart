@@ -33,8 +33,8 @@ class MyApp extends StatelessWidget {
           // scaffoldBackgroundColor: const Color.fromARGB(255, 87, 164, 255),
         ),
         debugShowCheckedModeBanner: false,
-        home: const MyHomePage(),
-        // home: const MyTemporary(),
+        // home: const MyHomePage(),
+        home: const MyTemporary(),
       ),
     );
   }

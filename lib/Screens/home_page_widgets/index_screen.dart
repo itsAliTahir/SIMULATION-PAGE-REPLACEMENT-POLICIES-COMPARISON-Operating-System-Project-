@@ -28,14 +28,14 @@ class _MyIndexScreenState extends State<MyIndexScreen> {
     return Center(
       child: SingleChildScrollView(
         child: SizedBox(
-          width: 400,
+          width: MediaQuery.of(context).size.width <= 400 ? 300 : 400,
           height: 470,
           child: Stack(
             children: [
               Positioned(
                 top: 0,
                 child: Container(
-                  width: 400,
+                  width: MediaQuery.of(context).size.width <= 400 ? 300 : 400,
                   height: 60,
                   color: Colors.transparent,
                   child: const Text(
@@ -53,7 +53,7 @@ class _MyIndexScreenState extends State<MyIndexScreen> {
               Positioned(
                 top: 60,
                 child: Container(
-                  width: 400,
+                  width: MediaQuery.of(context).size.width <= 400 ? 300 : 400,
                   height: 320,
                   decoration: const BoxDecoration(
                       color: Colors.white,
@@ -77,7 +77,7 @@ class _MyIndexScreenState extends State<MyIndexScreen> {
               Positioned(
                 top: 379,
                 child: Container(
-                  width: 400,
+                  width: MediaQuery.of(context).size.width <= 400 ? 300 : 400,
                   height: 80,
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(

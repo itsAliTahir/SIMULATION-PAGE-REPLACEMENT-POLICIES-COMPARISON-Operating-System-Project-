@@ -35,7 +35,9 @@ class _MyPagesCirclesState extends State<MyPagesCircles> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+            margin: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width <= 400 ? 20 : 50,
+                vertical: 5),
             child: Wrap(
               children: [
                 for (int index = 0;

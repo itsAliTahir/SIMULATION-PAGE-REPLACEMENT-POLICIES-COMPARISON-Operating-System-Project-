@@ -173,41 +173,51 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
                                   ))
                               : const SizedBox(),
                   h1 == true
-                      ? const DelayedDisplay(
-                          delay: Duration(milliseconds: 300),
-                          fadingDuration: Duration(milliseconds: 600),
+                      ? DelayedDisplay(
+                          delay: const Duration(milliseconds: 300),
+                          fadingDuration: const Duration(milliseconds: 600),
                           child: Text(
                             "This algorithm follows the principle of 'first in, first out,' treating memory pages like a queue where the page that has been in memory the longest is the first to be replaced. ",
                             textAlign: TextAlign.justify,
                             style: TextStyle(
                               color: Colors.grey,
-                              fontSize: 16,
+                              fontSize: MediaQuery.of(context).size.width <= 400
+                                  ? 14
+                                  : 16,
                               // fontWeight: FontWeight.bold
                             ),
                           ))
                       : h2 == true
-                          ? const DelayedDisplay(
-                              delay: Duration(milliseconds: 300),
-                              fadingDuration: Duration(milliseconds: 600),
+                          ? DelayedDisplay(
+                              delay: const Duration(milliseconds: 300),
+                              fadingDuration: const Duration(milliseconds: 600),
                               child: Text(
                                 "Last In First Out treats memory pages as a stack, where the page that has been most recently added to memory is the first one to be considered for replacement.",
                                 textAlign: TextAlign.justify,
                                 style: TextStyle(
                                   color: Colors.grey,
-                                  fontSize: 16,
+                                  fontSize:
+                                      MediaQuery.of(context).size.width <= 400
+                                          ? 14
+                                          : 16,
                                   // fontWeight: FontWeight.bold
                                 ),
                               ))
                           : h3 == true
-                              ? const DelayedDisplay(
-                                  delay: Duration(milliseconds: 300),
-                                  fadingDuration: Duration(milliseconds: 600),
+                              ? DelayedDisplay(
+                                  delay: const Duration(milliseconds: 300),
+                                  fadingDuration:
+                                      const Duration(milliseconds: 600),
                                   child: Text(
                                     "This algorithm aims to capture the temporal locality of page accesses by prioritizing pages that have been recently used. This enhances adaptability to process access patterns, potentially minimizing page faults.",
                                     textAlign: TextAlign.justify,
                                     style: TextStyle(
                                       color: Colors.grey,
-                                      fontSize: 16,
+                                      fontSize:
+                                          MediaQuery.of(context).size.width <=
+                                                  400
+                                              ? 14
+                                              : 16,
                                       // fontWeight: FontWeight.bold
                                     ),
                                   ))
@@ -230,7 +240,9 @@ class _MySelectAlgorithmState extends State<MySelectAlgorithm>
         Container(
           width: 400,
           height: 120,
-          margin: const EdgeInsets.symmetric(horizontal: 20),
+          margin: EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).size.width <= 400 ? 5 : 20,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
