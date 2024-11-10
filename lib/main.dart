@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'Provider/data_provider.dart';
 import 'Screens/home_page.dart';
-import 'temporary.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,14 +27,12 @@ class MyApp extends StatelessWidget {
           ),
           primarySwatch: Colors.blue,
           hoverColor: const Color.fromARGB(255, 3, 95, 255),
-
           primaryColor: Colors.blue,
           scaffoldBackgroundColor: const Color.fromARGB(255, 51, 135, 237),
-          // scaffoldBackgroundColor: const Color.fromARGB(255, 87, 164, 255),
         ),
         debugShowCheckedModeBanner: false,
-        // home: const MyHomePage(),
-        home: const MyTemporary(),
+        home: const MyHomePage(),
+        // home: const MyTemporary(),
       ),
     );
   }
